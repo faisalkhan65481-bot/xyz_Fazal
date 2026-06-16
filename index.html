@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Rizwana! 🎉</title>
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow-y: auto;
+    background: radial-gradient(circle at top, #1e293b, #020617);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+}
+.container {
+    max-width: 700px;
+    padding: 20px;
+    z-index: 2;
+    width: 90%;
+    margin: auto;
+}
+.hidden { display: none !important; }
+
+/* Fixed Music Control Button */
+.music-control {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 105, 180, 0.25);
+    border: 1px solid rgba(255, 105, 180, 0.5);
+    padding: 10px 18px;
+    border-radius: 30px;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 100;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Candle & Cake Styling */
+.candle {
+    width: 24px;
+    height: 90px;
+    background: linear-gradient(to right, #ffffff, #e2e8f0);
+    margin: 30px auto 10px auto;
+    position: relative;
+    cursor: pointer;
+    border-radius: 6px;
+    box-shadow: inset -4px 0 8px rgba(0,0,0,0.1);
+}
+.flame {
+    width: 24px;
+    height: 35px;
+    border-radius: 50% 50% 20% 20%;
+    background: linear-gradient(to bottom, red, orange, gold, white);
+    position: absolute;
+    top: -38px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    box-shadow: 0 0 30px #f59e0b, 0 0 60px #ef4444;
+    transition: opacity 0.5s ease;
+}
+.cake {
+    width: 200px;
+    height: 100px;
+    background: linear-gradient(#ff69b4, #ff1493);
+    border-radius: 15px 15px 5px 5px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+.cake::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: #fff;
+    border-radius: 15px 15px 0 0;
+    top: 0; left: 0;
+}
+
+/* Countdown & Panda Box */
+#countdown {
+    font-size: 60px;
+    font-weight: bold;
+    color: #ff69b4;
+    margin: 10px 0;
+    text-shadow: 0 0 25px rgba(255,105,180,0.6);
+}
+.panda-box {
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px dashed #00f5d4;
+    padding: 20px;
+    border-radius: 20px;
+    max-width: 450px;
+    margin: 20px auto;
+    backdrop-filter: blur(10px);
+    animation: popIn 0.5s ease;
+}
+.panda-emoji { font-size: 55px; margin-bottom: 10px; animation: bounce 1s infinite; }
+.panda-text { font-size: 1.15rem; font-weight: bold; line-height: 1.5; color: #fff; }
+
+/* Premium Card Box Styling */
+.message-card {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.04);
+    padding: 35px 30px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4), inset 0 0 15px rgba(255,255,255,0.05);
+    backdrop-filter: blur(10px);
+    margin-top: 30px;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+/* Custom Text Highlights */
+.glow {
+    font-size: 2.3rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ff69b4, 0 0 40px #ff1493;
+    margin-bottom: 10px;
+}
+.highlight-pink { color: #ff477e; font-weight: bold; }
+.highlight-blue { color: #00f5d4; font-weight: bold; }
+.highlight-gold { color: #ffb703; font-weight: bold; }
+
+/* Stats Display Box */
+.level-box {
+    background: rgba(0, 0, 0, 0.3);
+    border-left: 4px solid #ff477e;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+}
+.stat-item { font-weight: bold; margin: 8px 0; font-size: 1.15rem; }
+
+.particle {
+    position: fixed;
+    font-size: 24px;
+    user-select: none;
+    pointer-events: none;
+    z-index: 1;
+    animation: fall linear forwards;
+}
+@keyframes fall {
+    from { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes popIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+</style>
+</head>
+<body>
+
+<button class="music-control" onclick="toggleMusic()" id="music-btn">🎵 Tap to Unmute</button>
+
+<div class="container">
+    <div id="start">
+        <h2 style="font-weight: 500; font-size: 1.3rem; margin-bottom: 40px; color: #cbd5e1;">💡 Rizwana, tap the candle to begin your surprise</h2>
+        <div class="candle" onclick="ignite()">
+            <div id="flame" class="flame"></div>
+        </div>
+        <div class="cake"></div>
+    </div>
+
+    <div id="loading" class="hidden">
+        <h2 style="font-weight: 500; color: #cbd5e1; margin-bottom: 5px;">Preparing Something Special...</h2>
+        <div id="countdown">10</div>
+        
+        <div class="panda-box" id="panda-card">
+            <div class="panda-emoji" id="p-emoji">🐼</div>
+            <div class="panda-text" id="p-text">Hold on tight! The cutest pandas are wrapping up your cards... 💖</div>
+        </div>
+    </div>
+
+    <div id="final" class="hidden">
+        <div class="glow">🎉 Happy 21st Birthday, Rizwana! 🎉</div>
+        
+        <div class="message-card">
+            <p>Today isn't just your birthday — it's the celebration of someone who has a rare way of making the world feel a little brighter just by being in it. ✨</p>
+
+            <p>As you step into <span class="highlight-pink">Level 21</span>, I hope life surprises you with endless happiness, beautiful memories, success in everything you work for, and all the little moments that make your heart smile. ❤️</p>
+
+            <div class="level-box">
+                <div style="color: #00f5d4; font-weight: bold; margin-bottom: 10px; letter-spacing: 1px;">🚀 LEVEL 21 UNLOCKED</div>
+                <div class="stat-item" style="color: #ff758c;">🩷 Confidence +100</div>
+                <div class="stat-item" style="color: #00f5d4;">✨ Happiness +∞</div>
+                <div class="stat-item" style="color: #ffb703;">🌹 Charm + Unlimited</div>
+                <div class="stat-item" style="color: #9b5de5;">🏆 Success Mode Activated</div>
+                <div class="stat-item" style="color: #f15bb5;">⭐ Dream Achievement Rate Increased</div>
+            </div>
+
+            <p>And honestly... if birthdays are meant to celebrate extraordinary people, then today definitely deserves fireworks. 🎆</p>
+
+            <p>One thing I've always admired about you is your <span class="highlight-gold">determination</span>. The effort you've put into your <span class="highlight-blue">CUET journey</span> shows how strong, focused, and capable you really are. Results may take time, but people who work as hard as you do eventually find their way to success. 🌟</p>
+
+            <p>I truly hope you get into the college you've dreamed about, because if anyone deserves that moment of happiness and pride, it's you.</p>
+
+            <p>And here's a little secret... birthdays are supposed to make people older, but somehow <span class="highlight-pink">you keep becoming more amazing every year. 😌✨</span></p>
+
+            <p>May your smile stay bright, your heart stay happy, and your dreams turn into reality one by one.</p>
+
+            <p>So today, forget the stress, forget the worries, and just enjoy being celebrated — because someone as wonderful as you deserves a day that's just as special as they are. 🌙💖</p>
+
+            <p class="highlight-pink" style="font-size: 1.3rem; text-align: center; margin-top: 30px; font-weight: bold; text-shadow: 0 0 10px rgba(255,71,126,0.3);">Wishing you the happiest 21st birthday, Rizwana.</p>
+
+            <p style="text-align: center; font-weight: 500; color: #00f5d4; margin-bottom: 0;">May this year bring you everything you've been hoping for... and maybe a few beautiful surprises you never saw coming. ✨🎂🎁</p>
+        </div>
+    </div>
+</div>
+
+<audio id="music" loop preload="auto">
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const audio = document.getElementById("music");
+const musicBtn = document.getElementById("music-btn");
+
+// Unique Panda Cards Array with Custom Thoughts
+const pandaGreetings = [
+    { emoji: "🐼💌", text: "A sweet soul deserves the grandest wait... Panda is bringing the first card! 🌸", color: "#ff758c" },
+    { emoji: "🐼🎈", text: "Counting down to celebrate someone incredibly special and hardworking! ✨", color: "#00f5d4" },
+    { emoji: "🐼🎁", text: "Forget the worries, forget the stress... your magical year is loading! 💖", color: "#ffb703" },
+    { emoji: "🐼🎂", text: "Level 21 brings unlimited charm. Are you ready for the fireworks? 🚀", color: "#9b5de5" },
+    { emoji: "🐼👑", text: "Final check complete! Just a moment more for the big reveal... 💎", color: "#f15bb5" }
+];
+
+function toggleMusic() {
+    if (audio.paused) {
+        audio.play().then(() => { musicBtn.innerHTML = "⏸️ Pause Music"; }).catch(e => console.log(e));
+    } else {
+        audio.pause(); musicBtn.innerHTML = "🎵 Play Music";
+    }
+}
+
+function ignite(){
+    document.getElementById("flame").style.opacity = "1";
+    audio.play().then(() => { musicBtn.innerHTML = "⏸️ Pause Music"; }).catch(e => console.log(e));
+
+    setTimeout(() => {
+        document.getElementById("start").classList.add("hidden");
+        document.getElementById("loading").classList.remove("hidden");
+
+        let n = 10;
+        const cd = document.getElementById("countdown");
+        
+        const t = setInterval(() => {
+            n--;
+            cd.innerText = n;
+            
+            // Panda dynamic greeting card swapping every 2 seconds
+            if (n % 2 === 0 && n > 0) {
+                const index = (10 - n) / 2 - 1;
+                if(pandaGreetings[index]) {
+                    const card = document.getElementById("panda-card");
+                    document.getElementById("p-emoji").innerText = pandaGreetings[index].emoji;
+                    document.getElementById("p-text").innerText = pandaGreetings[index].text;
+                    card.style.borderColor = pandaGreetings[index].color;
+                    card.style.animation = 'none';
+                    setTimeout(() => { card.style.animation = 'popIn 0.4s ease'; }, 10);
+                }
+            }
+            
+            if(audio.paused) { audio.play().catch(()=>{}); }
+            
+            if(n === 0){
+                clearInterval(t);
+                showFinal();
+            }
+        }, 1000);
+    }, 900);
+}
+
+function showFinal(){
+    document.getElementById("loading").classList.add("hidden");
+    document.getElementById("final").classList.remove("hidden");
+    setInterval(fireworks, 500);
+}
+
+function fireworks(){
+    for(let i = 0; i < 6; i++){
+        let p = document.createElement("div");
+        p.className = "particle";
+        p.innerHTML = ["🎆","🎇","✨","🎉","💖","❤️"][Math.floor(Math.random()*6)];
+        p.style.left = Math.random() * 100 + "vw";
+        p.style.animationDuration = (3 + Math.random() * 3) + "s";
+        p.style.fontSize = (16 + Math.random() * 20) + "px";
+        document.body.appendChild(p);
+        setTimeout(() => p.remove(), 5000);
+    }
+}
+</script>
+
+</body>
+</html>
